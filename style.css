@@ -1,9 +1,9 @@
 :root {
     --mid-grey: rgb(220,220,220);
     --light-grey: rgb(240, 240, 240);
-    --dark-text: rgb(0,0,0,0.8);
-    --light-text: rgb(0,0,0,0.4);
-    --light-orange: rgb(255, 202, 155);
+    --dark-text: rgb(0,0,0,0.67);
+    --light-text: rgb(0,0,0,0.33);
+    --light-orange: rgb(255, 230, 209);
 }
 
     * {
@@ -38,6 +38,7 @@ h1 {
     border: 1px solid var(--light-grey);
     border-radius: 3px;
     margin-bottom: 8px;
+    cursor: text;
 }
 
 .textbox:last-child {
@@ -51,4 +52,9 @@ h1 {
 [contentEditable=true]:empty:after {
     content: attr(placeholder-text);
     color: var(--light-text);
+}
+
+.vague {
+    background-color: var(--light-orange);
+    outline: 2px solid var(--light-orange);
 }
