@@ -1,15 +1,6 @@
 //Development notes
 //Bonus 1: Clear button
 //Bonus 2: List out the verbs in a table beneath the card
-//Alternative version for listening for everytime text content changes
-    /*inputs.forEach(input => {
-        input.addEventListener('DOMCharacterDataModified', verbCheck);
-    });
-    function verbCheck(e) {
-        let editedInput = e.target.parentNode;
-        ...
-    }
-    */
 
 let verbBlackList = ["review", "support", "consider", "try", "continue", "continue to try"];
 
@@ -17,14 +8,14 @@ let inputs = document.querySelectorAll(".textbox");
 
 inputs.forEach(input => {
     input.addEventListener('focusout', (event) => verbCheck(event.target));
-    input.addEventListener('focusin', (event) => removeSpans(event.target));
+    input.addEventListener('focusin', (event) => hideSpans(event.target));
     verbCheck(input);
 });
 
 function verbCheck(editedInput) {
-    editedInput.classList.add("edited");
-    fullString = editedInput.textContent;
-    allWords = fullString.split(" ");
+    let fullString = editedInput.textContent;
+    editedInput.innerHTML = fullString; //This gets rid of any spans
+    let allWords = fullString.split(" ");
     let test1 = allWords[0];
     let test2 = allWords[0]+" "+allWords[1];
     let test3 = allWords[0]+" "+allWords[1]+" "+allWords[2];
@@ -40,7 +31,6 @@ function verbCheck(editedInput) {
 }
 
 function addSpan(editedInput, matchedPhrase, allWords, matchLength) {
-    console.log(editedInput, matchedPhrase, allWords, matchLength);
     let remainingWords = allWords.slice(matchLength);
     let remainingString = " " + remainingWords.join(" ");
     editedInput.textContent = remainingString;
@@ -50,9 +40,9 @@ function addSpan(editedInput, matchedPhrase, allWords, matchLength) {
     editedInput.prepend(vagueSpan);
 }
 
-function removeSpans(focusedInput) {
-    let existingString = focusedInput.textContent;
-    focusedInput.innerHTML = existingString;
+function hideSpans(focusedInput) {
+    let spans = focusedInput.querySelectorAll("span");
+    spans.forEach(span => span.classList.remove("vague"));
 }
 
 
