@@ -1,0 +1,54 @@
+:root {
+    --mid-grey: rgb(220,220,220);
+    --light-grey: rgb(240, 240, 240);
+    --dark-text: rgb(0,0,0,0.8);
+    --light-text: rgb(0,0,0,0.4);
+    --light-orange: rgb(255, 202, 155);
+}
+
+    * {
+    padding: 0px;
+    margin: 0px;
+    border: 0px solid blue;
+}
+
+body {
+    background-color: var(--light-grey);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: var(--dark-text);
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 1.7rem;
+    padding: 0px 8px;
+}
+.card {
+    margin-top: 60px;
+    width: 600px;
+    background-color: white;
+    padding: 20px 20px;
+    box-shadow: 0 0 12px -10px var(--light-text);
+}
+
+.textbox {
+    padding: 6px 8px;
+    border: 1px solid var(--light-grey);
+    border-radius: 3px;
+    margin-bottom: 8px;
+}
+
+.textbox:last-child {
+    margin-bottom: 0px;
+}
+
+.textbox:focus {
+    outline: 1px solid var(--mid-grey);
+}
+
+[contentEditable=true]:empty:after {
+    content: attr(placeholder-text);
+    color: var(--light-text);
+}
