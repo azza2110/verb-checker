@@ -13,8 +13,7 @@ inputs.forEach(input => {
 });
 
 function verbCheck(editedInput) {
-    let fullString = editedInput.textContent;
-    editedInput.innerHTML = fullString; //This gets rid of any spans
+    let fullString = removeSpans(editedInput);
     let allWords = fullString.split(" ");
     let test1 = allWords[0];
     let test2 = allWords[0]+" "+allWords[1];
@@ -37,12 +36,23 @@ function addSpan(editedInput, matchedPhrase, allWords, matchLength) {
     let vagueSpan = document.createElement("span");
     vagueSpan.classList.add("vague");
     vagueSpan.textContent=matchedPhrase;
+    let vagueTooltip = document.createElement("span");
+    vagueTooltip.classList.add("tooltip");
+    vagueTooltip.innerHTML="<b>Vague verb</b><br><br> Replace with something more specific";
+    vagueSpan.append(vagueTooltip);
     editedInput.prepend(vagueSpan);
 }
 
 function hideSpans(focusedInput) {
     let spans = focusedInput.querySelectorAll("span");
     spans.forEach(span => span.classList.remove("vague"));
+}
+
+function removeSpans(editedInput) {
+    let existingTooltip = editedInput.querySelector(".tooltip");
+    if (existingTooltip !== null) existingTooltip.parentNode.removeChild(existingTooltip);
+    editedInput.innerHTML = editedInput.textContent;
+    return editedInput.textContent;
 }
 
 

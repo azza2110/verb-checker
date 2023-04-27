@@ -3,6 +3,7 @@
     --light-grey: rgb(240, 240, 240);
     --dark-text: rgb(0,0,0,0.67);
     --light-text: rgb(0,0,0,0.33);
+    --mid-orange: rgb(245, 117, 42);
     --light-orange: rgb(255, 230, 209);
 }
 
@@ -57,4 +58,40 @@ h1 {
 .vague {
     background-color: var(--light-orange);
     outline: 2px solid var(--light-orange);
+    position: relative;
 }
+
+.tooltip {
+    opacity: 0%;
+    width: 100px;
+    background-color: var(--light-orange);
+    text-align: center;
+    padding:5px 8px;
+    transition-duration: 0.3s;
+    position:absolute;
+    bottom: calc(100% + 16px);
+    left: 50%;
+    margin-left: -58px;
+    cursor: default;
+    color: var(--mid-orange);
+    font-size: 0.85rem;
+    box-shadow: 0 0 10px -8px var(--light-text);
+    /*z-index:1;*/
+}
+
+.vague:hover .tooltip {
+    opacity: 100%;
+    transition-duration: 0.3s;
+}
+
+.tooltip::after {
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -8px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: var(--light-orange) transparent transparent transparent;
+    
+  }
