@@ -16,12 +16,12 @@ let verbBlackList = ["review", "support", "consider", "try", "continue", "contin
 let inputs = document.querySelectorAll(".textbox");
 
 inputs.forEach(input => {
-    input.addEventListener('focusout', verbCheck);
-    input.addEventListener('focusin', removeSpans);
+    input.addEventListener('focusout', (event) => verbCheck(event.target));
+    input.addEventListener('focusin', (event) => removeSpans(event.target));
+    verbCheck(input);
 });
 
-function verbCheck(e) {
-    let editedInput = e.target;
+function verbCheck(editedInput) {
     editedInput.classList.add("edited");
     fullString = editedInput.textContent;
     allWords = fullString.split(" ");
@@ -50,8 +50,7 @@ function addSpan(editedInput, matchedPhrase, allWords, matchLength) {
     editedInput.prepend(vagueSpan);
 }
 
-function removeSpans(e) {
-    let focusedInput = e.target;
+function removeSpans(focusedInput) {
     let existingString = focusedInput.textContent;
     focusedInput.innerHTML = existingString;
 }
