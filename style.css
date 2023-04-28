@@ -7,7 +7,7 @@
     --light-orange: rgb(255, 230, 209);
 }
 
-    * {
+* {
     padding: 0px;
     margin: 0px;
     outline: 0px solid blue;
@@ -18,7 +18,8 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: var(--dark-text);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
@@ -26,6 +27,7 @@ h1 {
     font-size: 1.7rem;
     padding: 0px 8px;
 }
+
 .card {
     margin-top: 60px;
     width: 600px;
@@ -63,23 +65,25 @@ h1 {
 
 .tooltip {
     opacity: 0%;
+    visibility:hidden;
     width: 100px;
     background-color: var(--light-orange);
     text-align: center;
-    padding:5px 8px;
+    padding:8px 10px;
     transition-duration: 0.3s;
     position:absolute;
     bottom: calc(100% + 16px);
     left: 50%;
-    margin-left: -58px;
+    margin-left: -60px;
     cursor: default;
     color: var(--mid-orange);
     font-size: 0.85rem;
     box-shadow: 0 0 10px -8px var(--light-text);
-    /*z-index:1;*/
+    z-index:1;
 }
 
 .vague:hover .tooltip {
+    visibility: visible;
     opacity: 100%;
     transition-duration: 0.3s;
 }
@@ -93,5 +97,50 @@ h1 {
     border-width: 8px;
     border-style: solid;
     border-color: var(--light-orange) transparent transparent transparent;
-    
+  }
+
+/*Other styling for demo page - Button*/
+
+  .button {
+    margin-top: 40px;
+    padding:8px 32px;
+    border: 1px solid var(--mid-grey);
+    border-radius: 5px;
+    color: var(--light-text);
+    cursor: pointer;
+  }
+
+  .button:hover {
+    color: var(--dark-text);
+    border: 1px solid var(--mid-grey);
+    background-color: rgb(255,255,255,0.20);
+  }
+
+  .button:active {
+    color: var(--dark-text);
+    transform: translateY(1px);
+  }
+
+  /*Other styling for demo page - Blacklist*/
+
+  .blacklist {
+    margin-top: 40px;
+    width: 600px;
+    padding: 0px 20px;
+    color: var(--light-text);
+    text-align: left;
+  }
+
+  h2 {
+    font-size: 1.0rem;
+    padding: 8px 8px;
+  }
+
+  .wordlist {
+    color: var(--light-text);
+    list-style-position: inside;
+  }
+
+  li {
+    padding: 3px 10px;
   }

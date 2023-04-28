@@ -1,8 +1,4 @@
-//Development notes
-//Bonus 1: Clear button
-//Bonus 2: List out the verbs in a table beneath the card
-
-let verbBlackList = ["review", "support", "consider", "try", "continue", "continue to try"];
+let verbBlackList = ["discuss", "support", "review", "handle", "try", "do", "start", "commence", "continue", "further", "look into", "reach out", "get in touch", "contact", "talk", "investigate", "tackle", "consider", "look at", "address", "continue to try"];
 
 let inputs = document.querySelectorAll(".textbox");
 
@@ -38,7 +34,7 @@ function addSpan(editedInput, matchedPhrase, allWords, matchLength) {
     vagueSpan.textContent=matchedPhrase;
     let vagueTooltip = document.createElement("span");
     vagueTooltip.classList.add("tooltip");
-    vagueTooltip.innerHTML="<b>Vague verb</b><br><br> Replace with something more specific";
+    vagueTooltip.innerHTML="<b>Vague verb</b><br><br>Replace with something more specific";
     vagueSpan.append(vagueTooltip);
     editedInput.prepend(vagueSpan);
 }
@@ -55,5 +51,19 @@ function removeSpans(editedInput) {
     return editedInput.textContent;
 }
 
+//Other code for demo page - Button
+let button = document.querySelector(".button");
 
+button.addEventListener('click', (event) => clearInputs());
 
+function clearInputs() {
+    inputs.forEach(input => input.innerHTML="")
+}
+
+//Other code for demo page - Blacklist
+let wordList = document.querySelector(".wordlist")
+verbBlackList.forEach(vagueVerb => {
+    let newEntry = document.createElement("li");
+    newEntry.textContent = vagueVerb;
+    wordList.appendChild(newEntry);
+})
